@@ -1,13 +1,13 @@
 package br.com.avantis.entregue.api.model;
 
+import java.io.Serializable;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.Objects;
 
 @Entity
 @Table(name = "categoria")
-public class Categoria {
+public class Categoria implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,12 +35,18 @@ public class Categoria {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         Categoria categoria = (Categoria) o;
 
-        if (codigo != null ? !codigo.equals(categoria.codigo) : categoria.codigo != null) return false;
+        if (codigo != null ? !codigo.equals(categoria.codigo) : categoria.codigo != null) {
+            return false;
+        }
         return nome != null ? nome.equals(categoria.nome) : categoria.nome == null;
     }
 

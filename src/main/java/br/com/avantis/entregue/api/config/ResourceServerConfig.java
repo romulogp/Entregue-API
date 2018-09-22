@@ -34,12 +34,12 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/categorias").permitAll() // Permite acesso sem autenticação
-                .antMatchers("/categorias/*").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                .csrf().disable(); // Desnecessário pois nesse projeto, não há a necessidade de bloquear javascript injection
+            .antMatchers("/categorias").permitAll() // Permite acesso sem autenticação
+            .antMatchers("/categorias/*").permitAll()
+            .anyRequest().authenticated()
+            .and()
+            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+            .csrf().disable(); // Desnecessário pois nesse projeto, não há a necessidade de bloquear javascript injection
     }
 
     @Override

@@ -40,8 +40,8 @@ public class LancamentoResource {
     public ResponseEntity<Lancamento> buscarPeloCodigo(@PathVariable Long codigo) {
         Lancamento lancamentoRecuperado = lancamentoRepository.findOne(codigo);
         return lancamentoRecuperado == null
-                ? ResponseEntity.notFound().build()
-                : ResponseEntity.ok(lancamentoRecuperado);
+               ? ResponseEntity.notFound().build()
+               : ResponseEntity.ok(lancamentoRecuperado);
     }
 
     @PostMapping
@@ -49,7 +49,7 @@ public class LancamentoResource {
     public ResponseEntity<Lancamento> criar(@Valid @RequestBody Lancamento lancamento, HttpServletResponse response) {
         Lancamento lancamentoSalvo = lancamentoService.salvar(lancamento);
         eventPublisher.publishEvent(
-                new RecursoCriadoEvent(this, response, lancamentoSalvo.getCodigo()));
+            new RecursoCriadoEvent(this, response, lancamentoSalvo.getCodigo()));
         return ResponseEntity.status(HttpStatus.CREATED).body(lancamentoSalvo);
     }
 

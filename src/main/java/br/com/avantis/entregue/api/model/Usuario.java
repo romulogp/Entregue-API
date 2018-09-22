@@ -28,8 +28,8 @@ public class Usuario implements Serializable {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "usuario_permissao",
-            joinColumns = @JoinColumn(name = "codigo_usuario"),
-            inverseJoinColumns = @JoinColumn(name = "codigo_permissao"))
+               joinColumns = @JoinColumn(name = "codigo_usuario"),
+               inverseJoinColumns = @JoinColumn(name = "codigo_permissao"))
     private Set<Permissao> permissoes = new HashSet<>();
 
 }

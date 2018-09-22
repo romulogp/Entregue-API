@@ -1,6 +1,5 @@
 package br.com.avantis.entregue.api.event;
 
-import br.com.avantis.entregue.api.event.RecursoCriadoEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -17,9 +16,9 @@ public class RecursoCriadoListener {
         Long codigoRecurso = event.getCodigoRecurso();
 
         URI locationURI = ServletUriComponentsBuilder.fromCurrentRequestUri()
-                .path("/{codigo}")
-                .buildAndExpand(codigoRecurso)
-                .toUri();
+            .path("/{codigo}")
+            .buildAndExpand(codigoRecurso)
+            .toUri();
 
         response.addHeader("Location", locationURI.toASCIIString());
     }

@@ -6,7 +6,6 @@ import br.com.avantis.entregue.api.repository.LancamentoRepository;
 import br.com.avantis.entregue.api.repository.PessoaRepository;
 import br.com.avantis.entregue.api.service.exception.PessoaInexistenteOuInativaException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.stereotype.Service;
 
 @Service

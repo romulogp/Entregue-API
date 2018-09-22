@@ -6,8 +6,8 @@ import javax.servlet.http.HttpServletResponse;
 
 public class RecursoCriadoEvent extends ApplicationEvent {
 
-    private HttpServletResponse response;
-    private Long codigoRecurso;
+    private final HttpServletResponse response;
+    private final Long codigoRecurso;
 
     public RecursoCriadoEvent(Object source, HttpServletResponse response, Long codigo) {
         super(source);

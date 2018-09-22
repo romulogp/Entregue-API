@@ -53,7 +53,7 @@ public class CorsFilter implements Filter {
 
     private boolean isOriginPermitida(HttpServletRequest req) {
         return apiProperty.getOriginPermitida().equals("*")
-                || apiProperty.getOriginPermitida().equals(req.getHeader("Origin"));
+               || apiProperty.getOriginPermitida().equals(req.getHeader("Origin"));
     }
 
 }

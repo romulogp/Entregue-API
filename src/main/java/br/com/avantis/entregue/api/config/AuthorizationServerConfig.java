@@ -22,21 +22,21 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory() // É possível configurar para buscar info no banco de dados
-                .withClient("entregueapp")
-                .secret("3ntr3gu3ap1")
-                .scopes("read", "write")
-                .authorizedGrantTypes("password", "refresh_token") // permite obter novo access_token através do refresh_token
-                .accessTokenValiditySeconds(1800) // 20 segundos para testes com refresh token
-                .refreshTokenValiditySeconds(3600 * 24); // refresh_token válido por 1 dia
+            .withClient("entregueapp")
+            .secret("3ntr3gu3ap1")
+            .scopes("read", "write")
+            .authorizedGrantTypes("password", "refresh_token") // permite obter novo access_token através do refresh_token
+            .accessTokenValiditySeconds(1800) // 20 segundos para testes com refresh token
+            .refreshTokenValiditySeconds(3600 * 24); // refresh_token válido por 1 dia
     }
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints
-                .tokenStore(tokenStore()) // É necessário armazenar o token em alguma lugar
-                .accessTokenConverter(accessTokenConverter())
-                .reuseRefreshTokens(false) // "Sempre que eu pedir um novo access_token usando refresh_token, um novo refresh_token será enviado"
-                .authenticationManager(authenticationManager);
+            .tokenStore(tokenStore()) // É necessário armazenar o token em alguma lugar
+            .accessTokenConverter(accessTokenConverter())
+            .reuseRefreshTokens(false) // "Sempre que eu pedir um novo access_token usando refresh_token, um novo refresh_token será enviado"
+            .authenticationManager(authenticationManager);
         // o angular buscará o token aqui e depois retornará esse string para que seja possível acessar a API
     }
 

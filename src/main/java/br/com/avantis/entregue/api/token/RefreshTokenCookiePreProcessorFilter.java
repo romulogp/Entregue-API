@@ -18,8 +18,8 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 /**
- * Intercepta uma requisição de entrada, pega o refresh_token do cookie, e injeta no header da
- * requisição.
+ * Intercepta uma requisição de entrada, pega o refresh_token do cookie, e
+ * injeta no header da requisição.
  */
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
@@ -27,13 +27,13 @@ public class RefreshTokenCookiePreProcessorFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-            throws IOException, ServletException {
+        throws IOException, ServletException {
 
         HttpServletRequest req = (HttpServletRequest) request;
 
         if ("/oauth/token".equalsIgnoreCase(req.getRequestURI())
-                && "refresh_token".equals(req.getParameter("grant_type"))
-                && req.getCookies() != null) {
+            && "refresh_token".equals(req.getParameter("grant_type"))
+            && req.getCookies() != null) {
             for (Cookie cookie : req.getCookies()) {
                 if (cookie.getName().equals("refreshToken")) {
                     String refreshToken = cookie.getValue();
