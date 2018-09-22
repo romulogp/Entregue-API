@@ -1,4 +1,4 @@
-package br.com.avantis.entregue.api.resource;
+package br.com.avantis.entregue.api.resources;
 
 import br.com.avantis.entregue.api.config.property.EntregueApiProperty;
 import org.springframework.beans.factory.annotation.Autowired;

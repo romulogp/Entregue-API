@@ -1,4 +1,4 @@
-package br.com.avantis.entregue.api.service.exception;
+package br.com.avantis.entregue.api.services;
 
 public class PessoaInexistenteOuInativaException extends RuntimeException {
 

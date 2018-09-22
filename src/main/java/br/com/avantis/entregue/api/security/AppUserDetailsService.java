@@ -1,8 +1,8 @@
 package br.com.avantis.entregue.api.security;
 
-import br.com.avantis.entregue.api.model.Permissao;
-import br.com.avantis.entregue.api.model.Usuario;
-import br.com.avantis.entregue.api.repository.UsuarioRepository;
+import br.com.avantis.entregue.api.domain.Usuario;
+import br.com.avantis.entregue.api.domain.Permissao;
+import br.com.avantis.entregue.api.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
