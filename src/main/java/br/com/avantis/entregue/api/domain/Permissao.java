@@ -1,5 +1,9 @@
 package br.com.avantis.entregue.api.domain;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -9,9 +13,15 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(of = "id")
-public class Permissao {
+@Entity
+@Table(name = "permissao")
+public class Permissao implements Serializable {
 
-    private Long id;
-    private String descricao;
+    private static final long serialVersionUID = 1L;
     
+    @Id
+    private Long id;
+    private String nome;
+    private String descricao;
+
 }

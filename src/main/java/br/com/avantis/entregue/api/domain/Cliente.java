@@ -15,5 +15,6 @@ public class Cliente {
     private String celular;
     private String email;
     private List<Endereco> enderecos;
+    private Usuario cadastrante;
     
 }

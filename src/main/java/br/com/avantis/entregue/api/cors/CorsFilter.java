@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 public class CorsFilter implements Filter {
 
     @Autowired
-    private EntregueApiProperty apiProperty;
+    private EntregueApiProperty properties;
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
@@ -28,7 +28,7 @@ public class CorsFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
 
-        res.setHeader("Access-Control-Allow-Origin", apiProperty.getOriginPermitida());
+        res.setHeader("Access-Control-Allow-Origin", properties.getOriginPermitida());
         res.setHeader("Access-Control-Allow-Credentials", "true"); // Permitir envio do cookie do refresh_token
 
         if ("OPTIONS".equals(req.getMethod()) && isOriginPermitida(req)) {
@@ -52,8 +52,8 @@ public class CorsFilter implements Filter {
     }
 
     private boolean isOriginPermitida(HttpServletRequest req) {
-        return apiProperty.getOriginPermitida().equals("*")
-               || apiProperty.getOriginPermitida().equals(req.getHeader("Origin"));
+        return properties.getOriginPermitida().equals("*")
+               || properties.getOriginPermitida().contains(req.getHeader("Origin"));
     }
 
 }
