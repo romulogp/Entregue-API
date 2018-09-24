@@ -35,6 +35,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
+            .antMatchers("/usuarios/**").permitAll()
             .anyRequest().authenticated()// Permite acesso sem autenticação
             .and()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()

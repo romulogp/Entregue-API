@@ -1,15 +1,15 @@
 package br.com.avantis.entregue.api.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.time.LocalDateTime;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -37,6 +37,7 @@ public class Usuario implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull
@@ -45,16 +46,15 @@ public class Usuario implements Serializable {
     @NotNull
     private String email;
 
-    @NotNull
-    @JsonIgnore
+    @JsonProperty
     private String senha;
 
+    private LocalDateTime criadoEm;
+    
+    private boolean ativo;
+
     @JsonIgnore
-    @ManyToMany(fetch = FetchType.LAZY,
-                cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-                })
+    @ManyToMany
     @JoinTable(
         name = "usuario_permissao",
         joinColumns = @JoinColumn(name = "usuario_id"),
@@ -64,5 +64,14 @@ public class Usuario implements Serializable {
     @JsonIgnore
     @OneToOne
     private Usuario cadastrante;
+
+    @JsonIgnore
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 
 }

@@ -28,4 +28,5 @@ public class Permissao implements Serializable {
     
     @ManyToMany(mappedBy = "permissoes")
     private List<Usuario> usuarios;
+    
 }

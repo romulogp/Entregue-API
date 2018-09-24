@@ -1,10 +1,7 @@
 package br.com.avantis.entregue.api.repositories;
 
-import br.com.avantis.entregue.api.domain.Permissao;
 import br.com.avantis.entregue.api.domain.Usuario;
-import java.util.List;
 import java.util.Optional;
-import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
