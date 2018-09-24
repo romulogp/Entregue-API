@@ -35,7 +35,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-            .anyRequest().permitAll() // Permite acesso sem autenticação
+            .anyRequest().authenticated()// Permite acesso sem autenticação
             .and()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
             .csrf().disable(); // Desnecessário pois nesse projeto, não há a necessidade de bloquear javascript injection

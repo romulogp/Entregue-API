@@ -25,7 +25,7 @@ public class AppUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Optional<Usuario> usuarioOptional = usuarioRepository.findByEmail(email);
+        Optional<Usuario> usuarioOptional = usuarioRepository.findByEmailWithPermissions(email);
         Usuario usuario = usuarioOptional.orElseThrow(() -> new UsernameNotFoundException("Usuário e/ou senha incorreto(s)"));
         return new User(email, usuario.getSenha(), getPermissoes(usuario));
     }
