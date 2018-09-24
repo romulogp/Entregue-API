@@ -1,0 +1,1 @@
+INSERT INTO `db_entregue`.`usuario` (`nome`, `email`, `senha`, `criado_em`, `cadastrante_id`) VALUES ('Admin', 'admin@admin.com.br', '$2a$10$9GxG9xxZGF/DO3.cHMXw1OtTJiOMgtayBbxJ/AeAYJOCmctRi9Vau', now(), NULL);
