@@ -24,6 +24,7 @@ public class UsuarioService {
         String encodedPassword = passwordEncoder.encode(usuario.getSenha());
         usuario.setSenha(encodedPassword);
         usuario.setCriadoEm(LocalDateTime.now());
+        usuario.setAtivo(true);
         return usuarioRepository.save(usuario);
     }
 

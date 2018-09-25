@@ -3,6 +3,7 @@ package br.com.avantis.entregue.api.domain;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -46,12 +47,13 @@ public class Usuario implements Serializable {
     @NotNull
     private String email;
 
-    @JsonProperty
+    @JsonProperty(access = Access.WRITE_ONLY)
     private String senha;
 
+    @JsonFormat(pattern = "dd/MM/yyyy hh:mm:ss")
     private LocalDateTime criadoEm;
     
-    private boolean ativo;
+    private boolean ativo = true;
 
     @JsonIgnore
     @ManyToMany
@@ -61,17 +63,8 @@ public class Usuario implements Serializable {
         inverseJoinColumns = @JoinColumn(name = "permissao_id"))
     private Set<Permissao> permissoes = new HashSet<>();
 
-    @JsonIgnore
+    @JsonProperty(access = Access.WRITE_ONLY)
     @OneToOne
     private Usuario cadastrante;
-
-    @JsonIgnore
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
 
 }

@@ -29,7 +29,7 @@ public class UsuarioResource {
     private UsuarioService usuarioService;
 
     @PostMapping("/register")
-    public ResponseEntity<Usuario> register(@RequestBody Usuario usuario) throws URISyntaxException {
+    public ResponseEntity<Usuario> register(@RequestBody @Valid Usuario usuario) throws URISyntaxException {
         Usuario usuarioSalvo = usuarioService.register(usuario);
         return ResponseEntity.created(new URI("/usuarios")).body(usuarioSalvo);
     }
